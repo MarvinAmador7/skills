@@ -41,6 +41,16 @@ The deliverable is code plus an **evidence ledger**: one row per claim (endpoint
 
 **Evaluated, not just written.** Two pressure scenarios (a Marketplace SaaS activation adapter under a deadline, and a Container Apps job adapter with a pre-approved sketch containing a wrong status enum) were run by fresh subagents with and without the skill. The baselines read the docs but still filled gaps from convention, cited a Microsoft Graph page as proof for a Marketplace API, stopped one link short of the ARM async-operations page, and left every gap in prose. With the skill, both runs produced 12-row ledgers, unverified-prefixed constants (5 and 3 distinct), and 16 and 12 documentation citations in code comments, versus no ledger, no unverified markers, and at most one citation without it. Scenarios, verbatim baseline quotes, metrics, a measurement script, and known limits are in [`skills/develop-with-evidence/evals/`](skills/develop-with-evidence/evals/RESULTS.md). Two complete ledgers from the passing runs ship as references.
 
+### isometric-architecture-diagram
+
+Generate a static **Palantir-style isometric architecture diagram** (SVG + 2x PNG) from a JSON spec: layers as thin 30° slabs, components as small blocks with name tags, right-angle connectors with dots at the bends, and one accent color reserved for the live request path. Two layouts: a flat ontology plane, or stacked platforms floating above a base plane joined by bundled wires. Dependency-free Node generator plus a headless-Chrome render script, a visual QA checklist, and two example specs. Design adapted from the g-ops landing page ontology diagrams.
+
+```bash
+npx skills add MarvinAmador7/skills --skill isometric-architecture-diagram
+```
+
+![Isometric architecture diagram example](skills/isometric-architecture-diagram/examples/rag-service.png)
+
 ## License
 
 MIT

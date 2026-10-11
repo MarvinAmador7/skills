@@ -1,0 +1,311 @@
+{
+ "layout": "stacked",
+ "title": "Addriva \u2014 Verify architecture (stacked)",
+ "width": 1920,
+ "height": 1780,
+ "scale": 0.55,
+ "origin": [
+  729,
+  1360
+ ],
+ "legend": {
+  "accent": "Live request path",
+  "neutral": "Build / support"
+ },
+ "slabs": [
+  {
+   "id": "clients",
+   "x": 0,
+   "y": 0,
+   "w": 1150,
+   "d": 180,
+   "z": 2160,
+   "label": "Clients",
+   "caption": null,
+   "captionBelow": false
+  },
+  {
+   "id": "workers",
+   "x": 0,
+   "y": 0,
+   "w": 1150,
+   "d": 180,
+   "z": 1440,
+   "label": "Cloudflare Workers",
+   "caption": null,
+   "captionBelow": false
+  },
+  {
+   "id": "storage",
+   "x": 0,
+   "y": 0,
+   "w": 1150,
+   "d": 180,
+   "z": 720,
+   "label": "Storage \u00b7 R2 addriva-data",
+   "caption": null,
+   "captionBelow": false
+  },
+  {
+   "id": "offline",
+   "x": 0,
+   "y": 0,
+   "w": 1150,
+   "d": 180,
+   "z": 0,
+   "label": "Offline build (Delta) \u00b7 lexer pipeline",
+   "caption": null,
+   "captionBelow": false
+  }
+ ],
+ "nodes": [
+  {
+   "id": "landing",
+   "slab": "clients",
+   "x": 250,
+   "y": 90,
+   "title": "Landing site",
+   "subs": [
+    "+ live demo"
+   ],
+   "accent": true
+  },
+  {
+   "id": "api",
+   "slab": "clients",
+   "x": 570,
+   "y": 90,
+   "title": "API callers",
+   "subs": [],
+   "accent": true
+  },
+  {
+   "id": "agents",
+   "slab": "clients",
+   "x": 890,
+   "y": 90,
+   "title": "AI agents",
+   "subs": [
+    "future MCP"
+   ],
+   "dashed": true
+  },
+  {
+   "id": "web",
+   "slab": "workers",
+   "x": 100,
+   "y": 90,
+   "title": "Web Worker",
+   "subs": [
+    "static site"
+   ]
+  },
+  {
+   "id": "server",
+   "slab": "workers",
+   "x": 330,
+   "y": 90,
+   "title": "Verify server",
+   "subs": [
+    "Hono \u00b7 oRPC \u00b7 Better Auth"
+   ],
+   "accent": true
+  },
+  {
+   "id": "lexer",
+   "slab": "workers",
+   "x": 560,
+   "y": 90,
+   "title": "Lexer",
+   "subs": [
+    "ONNX in WASM + rules"
+   ],
+   "accent": true
+  },
+  {
+   "id": "matcher",
+   "slab": "workers",
+   "x": 790,
+   "y": 90,
+   "title": "Matcher",
+   "subs": [
+    "exact \u00b7 fuzzy \u00b7 ambiguous"
+   ],
+   "accent": true
+  },
+  {
+   "id": "cache",
+   "slab": "workers",
+   "x": 1020,
+   "y": 90,
+   "title": "Memory cache",
+   "subs": [],
+   "accent": true
+  },
+  {
+   "id": "d1",
+   "slab": "storage",
+   "x": 220,
+   "y": 90,
+   "title": "D1",
+   "subs": [
+    "auth and users"
+   ]
+  },
+  {
+   "id": "matchkey",
+   "slab": "storage",
+   "x": 570,
+   "y": 90,
+   "title": "matchkey/v3.1",
+   "subs": [
+    "159.6M parcels \u00b7 per-ZIP Parquet"
+   ],
+   "accent": true,
+   "mono": true,
+   "glow": true
+  },
+  {
+   "id": "citymap",
+   "slab": "storage",
+   "x": 920,
+   "y": 90,
+   "title": "citymap/v2",
+   "subs": [
+    "coming soon, PR #15"
+   ],
+   "dashed": true,
+   "mono": true
+  },
+  {
+   "id": "attom",
+   "slab": "offline",
+   "x": 120,
+   "y": 90,
+   "title": "ATTOM data",
+   "subs": []
+  },
+  {
+   "id": "duck",
+   "slab": "offline",
+   "x": 400,
+   "y": 90,
+   "title": "DuckDB / MotherDuck",
+   "subs": [
+    "build"
+   ]
+  },
+  {
+   "id": "evals",
+   "slab": "offline",
+   "x": 700,
+   "y": 90,
+   "title": "Eval sets",
+   "subs": [
+    "+ training candidates"
+   ]
+  },
+  {
+   "id": "usps",
+   "slab": "offline",
+   "x": 1000,
+   "y": 90,
+   "title": "usps-lexer",
+   "subs": [
+    "GitHub Packages"
+   ]
+  }
+ ],
+ "edges": [
+  {
+   "from": "server",
+   "to": "lexer",
+   "accent": true
+  },
+  {
+   "from": "lexer",
+   "to": "matcher",
+   "accent": true
+  },
+  {
+   "from": "matcher",
+   "to": "cache",
+   "accent": true
+  },
+  {
+   "from": "attom",
+   "to": "duck"
+  },
+  {
+   "from": "duck",
+   "to": "evals"
+  },
+  {
+   "from": "evals",
+   "to": "usps"
+  }
+ ],
+ "bundles": [
+  {
+   "from": "clients",
+   "to": "workers",
+   "at": [
+    330,
+    130
+   ],
+   "count": 4,
+   "axis": "x",
+   "spacing": 16,
+   "accent": true,
+   "label": "HTTPS /v1/verify"
+  },
+  {
+   "from": "workers",
+   "to": "storage",
+   "at": [
+    570,
+    130
+   ],
+   "toAt": [
+    570,
+    130
+   ],
+   "curve": false,
+   "count": 4,
+   "spacing": 16,
+   "accent": true,
+   "label": "per-ZIP reads"
+  },
+  {
+   "from": "workers",
+   "to": "storage",
+   "at": [
+    180,
+    40
+   ],
+   "count": 3,
+   "spacing": 14,
+   "label": "sessions"
+  },
+  {
+   "from": "storage",
+   "to": "offline",
+   "at": [
+    450,
+    130
+   ],
+   "count": 4,
+   "spacing": 14,
+   "label": "versioned folders \u2192 R2"
+  }
+ ],
+ "notes": [
+  {
+   "slab": "offline",
+   "x": 850,
+   "y": 180,
+   "text": "misreads \u2192"
+  }
+ ],
+ "subtitle": "Layers stacked top \u2192 bottom. Lexer model ships from usps-lexer (GitHub Packages)."
+}

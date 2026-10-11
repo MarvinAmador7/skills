@@ -1,0 +1,270 @@
+{
+ "title": "RAG service \u2014 request path",
+ "subtitle": "Example spec for the isometric-architecture-diagram skill",
+ "width": 1920,
+ "height": 1080,
+ "scale": 0.85,
+ "origin": [
+  620,
+  170
+ ],
+ "legend": {
+  "accent": "Query path",
+  "neutral": "Ingest / support"
+ },
+ "slabs": [
+  {
+   "x": 0,
+   "y": 0,
+   "w": 240,
+   "d": 360,
+   "label": "Clients"
+  },
+  {
+   "x": 340,
+   "y": 0,
+   "w": 640,
+   "d": 360,
+   "label": "API tier",
+   "grid": 40,
+   "strata": true
+  },
+  {
+   "x": 1080,
+   "y": 0,
+   "w": 300,
+   "d": 360,
+   "label": "Stores"
+  },
+  {
+   "x": 340,
+   "y": 460,
+   "w": 1040,
+   "d": 200,
+   "label": "Ingest pipeline"
+  }
+ ],
+ "boundaries": [
+  {
+   "x": 1095,
+   "y": 110,
+   "w": 270,
+   "d": 235,
+   "label": "Object storage"
+  }
+ ],
+ "nodes": [
+  {
+   "id": "app",
+   "x": 120,
+   "y": 110,
+   "title": "Web app",
+   "accent": true
+  },
+  {
+   "id": "bot",
+   "x": 120,
+   "y": 260,
+   "title": "Slack bot",
+   "subs": [
+    "beta"
+   ],
+   "dashed": true
+  },
+  {
+   "id": "gw",
+   "x": 440,
+   "y": 110,
+   "title": "API gateway",
+   "subs": [
+    "auth \u00b7 rate limit"
+   ],
+   "accent": true,
+   "glow": true
+  },
+  {
+   "id": "ret",
+   "x": 640,
+   "y": 110,
+   "title": "Retriever",
+   "subs": [
+    "hybrid: BM25 + vector"
+   ],
+   "accent": true
+  },
+  {
+   "id": "llm",
+   "x": 860,
+   "y": 110,
+   "title": "Answer model",
+   "subs": [
+    "streaming"
+   ],
+   "accent": true
+  },
+  {
+   "id": "kv",
+   "x": 1230,
+   "y": 40,
+   "title": "Postgres",
+   "subs": [
+    "users \u00b7 sessions"
+   ]
+  },
+  {
+   "id": "vec",
+   "x": 1230,
+   "y": 180,
+   "title": "vectors/v4",
+   "subs": [
+    "12M chunks"
+   ],
+   "mono": true,
+   "accent": true
+  },
+  {
+   "id": "docs",
+   "x": 1230,
+   "y": 300,
+   "title": "raw/",
+   "subs": [
+    "PDF \u00b7 HTML"
+   ],
+   "mono": true
+  },
+  {
+   "id": "crawl",
+   "x": 480,
+   "y": 560,
+   "title": "Crawler"
+  },
+  {
+   "id": "chunk",
+   "x": 760,
+   "y": 560,
+   "title": "Chunk + embed",
+   "subs": [
+    "batch, cached"
+   ]
+  },
+  {
+   "id": "eval",
+   "x": 1040,
+   "y": 560,
+   "title": "Eval set",
+   "subs": [
+    "golden Q&A"
+   ]
+  }
+ ],
+ "edges": [
+  {
+   "from": "app",
+   "to": "gw",
+   "accent": true
+  },
+  {
+   "from": "bot",
+   "to": "gw",
+   "dashed": true,
+   "bendX": 300
+  },
+  {
+   "from": "gw",
+   "to": "ret",
+   "accent": true,
+   "note": "query"
+  },
+  {
+   "from": "ret",
+   "to": "llm",
+   "accent": true,
+   "label": "top-k"
+  },
+  {
+   "points": [
+    [
+     640,
+     145
+    ],
+    [
+     640,
+     180
+    ],
+    [
+     1175,
+     180
+    ]
+   ],
+   "accent": true
+  },
+  {
+   "points": [
+    [
+     495,
+     75
+    ],
+    [
+     495,
+     40
+    ],
+    [
+     1175,
+     40
+    ]
+   ],
+   "label": "session"
+  },
+  {
+   "from": "crawl",
+   "to": "chunk"
+  },
+  {
+   "from": "chunk",
+   "to": "eval"
+  },
+  {
+   "points": [
+    [
+     760,
+     525
+    ],
+    [
+     760,
+     420
+    ],
+    [
+     1230,
+     420
+    ],
+    [
+     1230,
+     335
+    ]
+   ],
+   "label": "store"
+  },
+  {
+   "points": [
+    [
+     860,
+     525
+    ],
+    [
+     860,
+     440
+    ],
+    [
+     1300,
+     440
+    ],
+    [
+     1300,
+     215
+    ]
+   ],
+   "dashed": true,
+   "label": "upsert"
+  }
+ ]
+}
