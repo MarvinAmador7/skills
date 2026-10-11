@@ -26,6 +26,17 @@ never from extra colors, shadows, or icons.
 - `scripts/render.sh` — `render.sh out.html out.png [w] [h]` → headless Chrome at device scale 2.
 - `examples/rag-service.json` (+ `.svg`, `.png`) — generic example using auto-routing.
 - `examples/addriva.json` (+ `.svg`, `.png`) — a dense real diagram using explicit routes.
+- `examples/ontology-system.json` (+ `.svg`, `.png`) — stacked: 3 platforms above an ontology plane, 3 sources below, curved bundles.
+- `examples/addriva-stacked.json` (+ `.svg`, `.png`) — stacked: 4 layers top → bottom with straight vertical bundles.
+
+## Choose a layout
+
+| `layout` | Looks like | Use when |
+|---|---|---|
+| `"plane"` (default) | g-ops `OntologyPlane`: all slabs on one floor, flows read left → right | one request path across tiers; ≤ 6 slabs; the reader should follow arrows |
+| `"stacked"` | g-ops `OntologySystem` / Palantir "Ontology System": platforms floating at different heights over a base plane, joined by wire bundles | layered systems (surfaces → core → sources), "everything plugs into one model", tiers matter more than individual hops |
+
+Both layouts share one renderer; `stacked` just turns on z elevation for slabs, layered painting (lowest z first) and bundles. A plane spec renders byte-identically to before.
 
 ## Spec format
 
@@ -48,6 +59,23 @@ Plane coordinates: **x runs down-right, y runs down-left** (screen = `origin + (
 }
 ```
 
+Stacked-only fields:
+
+```jsonc
+{
+  "layout": "stacked",
+  "slabs": [{ "id":"auto","x":30,"y":30,"w":240,"d":240,"z":450,       // elevation (plane units)
+              "caption":"Automations","captionBelow":false }],          // big uppercase title; below by default when z<0
+  "nodes": [{ "id":"rules","slab":"auto","x":150,"y":150,"title":"Rules" }], // inherits the slab's z
+  "edges": [{ "points":[[355,300],[565,300]] }],                       // z taken from `from` node, or set "z"/"slab"
+  "notes": [{ "slab":"plane","x":..,"y":..,"text":".." }],
+  "bundles": [{ "from":"auto","to":"plane",          // from = upper slab (underside), to = lower slab (top)
+                "at":[150,150], "toAt":[200,200],    // plane points; omit toAt for straight vertical wires
+                "count":6, "spacing":14, "axis":"h", // h = screen-horizontal fan (best), or x / y
+                "curve":true, "accent":false, "label":"triggers" }]
+}
+```
+
 ## Workflow
 
 1. **Gather the system.** List components, group them into 3–6 layers (clients, edge/API tier,
@@ -64,6 +92,11 @@ Plane coordinates: **x runs down-right, y runs down-left** (screen = `origin + (
 5. **Route edges.** Start with `from`/`to` (auto L/Z route along plane axes). Switch to explicit
    `points` when a route would cross a block or tag; routes that share an avenue should bundle
    on purpose. Verb labels (`label`) only on segments long enough to show the pill.
+   *Stacked:* put each tier on its own slab with a `z`; leave ≥ (w+d)/2 + 120 units of z between
+   slabs whose footprints overlap so the lower one's tags stay visible. Wire tiers with `bundles`
+   (3–6 lines each), not edges; accent only the bundle(s) on the hero path. Use `curve` when the
+   landing point is offset from the source, straight vertical wires when it is directly below.
+   Platforms side by side above a plane: give them the same `z` and the same x+y (they line up horizontally on screen).
 6. **Generate and render.**
    ```bash
    node scripts/generate.mjs my.json out/my.svg
@@ -77,6 +110,11 @@ Plane coordinates: **x runs down-right, y runs down-left** (screen = `origin + (
    - [ ] Slab labels read along the front edge and are not covered by blocks.
    - [ ] Nothing is clipped by the canvas; adjust `origin`/`scale` first, then positions.
    - [ ] Text is ≥ 11px at 1x; tags are concise (title + ≤ 2 sub-lines).
+   - Stacked only:
+   - [ ] Every bundle starts under its upper slab and lands on its lower slab's top (dots visible at both ends).
+   - [ ] No bundle crosses an intermediate slab or a tag; reroute with `at`/`toAt` or drop it to a note.
+   - [ ] Captions don't collide with the title/subtitle or with bundles; lower tiers caption below.
+   - [ ] Upper slabs don't hide lower-tier tags; raise the z gap, or the canvas `height` + `origin`.
 8. **Deliver** the PNG (and SVG if they want to edit). Keep the JSON spec next to it so the diagram can be regenerated.
 
 ## Aesthetic rules

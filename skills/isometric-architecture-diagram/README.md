@@ -2,7 +2,9 @@
 
 JSON spec → dark isometric architecture diagram (SVG + 2x PNG). See `SKILL.md`.
 
-![Example](examples/rag-service.png)
+| Plane | Stacked |
+|---|---|
+| ![Plane](examples/rag-service.png) | ![Stacked](examples/ontology-system.png) |
 
 ## Credits
 

@@ -1,0 +1,306 @@
+{
+ "layout": "stacked",
+ "title": "Ontology system",
+ "subtitle": "Generic stacked example: surfaces above, sources below, one ontology plane",
+ "width": 1920,
+ "height": 1260,
+ "scale": 0.6,
+ "origin": [
+  960,
+  410
+ ],
+ "legend": {
+  "accent": "Live decision path",
+  "neutral": "Reads / writes"
+ },
+ "slabs": [
+  {
+   "id": "analytics",
+   "x": -220.0,
+   "y": 280.0,
+   "w": 240,
+   "d": 240,
+   "z": 450,
+   "caption": "Analytics & workflows"
+  },
+  {
+   "id": "auto",
+   "x": 30.0,
+   "y": 30.0,
+   "w": 240,
+   "d": 240,
+   "z": 450,
+   "caption": "Automations"
+  },
+  {
+   "id": "apps",
+   "x": 280.0,
+   "y": -220.0,
+   "w": 240,
+   "d": 240,
+   "z": 450,
+   "caption": "Products & SDKs"
+  },
+  {
+   "id": "plane",
+   "x": 0,
+   "y": 0,
+   "w": 900,
+   "d": 900,
+   "z": 0,
+   "label": "Ontology",
+   "grid": 60,
+   "strata": true
+  },
+  {
+   "id": "data",
+   "x": 380.0,
+   "y": 880.0,
+   "w": 240,
+   "d": 240,
+   "z": -380,
+   "caption": "Data sources"
+  },
+  {
+   "id": "logic",
+   "x": 630.0,
+   "y": 630.0,
+   "w": 240,
+   "d": 240,
+   "z": -380,
+   "caption": "Logic sources"
+  },
+  {
+   "id": "action",
+   "x": 880.0,
+   "y": 380.0,
+   "w": 240,
+   "d": 240,
+   "z": -380,
+   "caption": "Systems of action"
+  }
+ ],
+ "nodes": [
+  {
+   "id": "dash",
+   "slab": "analytics",
+   "x": -100,
+   "y": 400,
+   "title": "Dashboards"
+  },
+  {
+   "id": "rules",
+   "slab": "auto",
+   "x": 150,
+   "y": 150,
+   "title": "Rules engine",
+   "accent": true
+  },
+  {
+   "id": "sdk",
+   "slab": "apps",
+   "x": 400,
+   "y": -100,
+   "title": "SDK \u00b7 API",
+   "mono": true
+  },
+  {
+   "id": "order",
+   "slab": "plane",
+   "x": 300,
+   "y": 300,
+   "title": "Order",
+   "accent": true,
+   "glow": true
+  },
+  {
+   "id": "cust",
+   "slab": "plane",
+   "x": 300,
+   "y": 620,
+   "title": "Customer"
+  },
+  {
+   "id": "plant",
+   "slab": "plane",
+   "x": 620,
+   "y": 300,
+   "title": "Plant",
+   "accent": true
+  },
+  {
+   "id": "ship",
+   "slab": "plane",
+   "x": 620,
+   "y": 620,
+   "title": "Shipment"
+  },
+  {
+   "id": "erp",
+   "slab": "data",
+   "x": 500,
+   "y": 1000,
+   "title": "ERP \u00b7 IoT"
+  },
+  {
+   "id": "ml",
+   "slab": "logic",
+   "x": 750,
+   "y": 750,
+   "title": "Forecast model"
+  },
+  {
+   "id": "mes",
+   "slab": "action",
+   "x": 1000,
+   "y": 500,
+   "title": "MES",
+   "accent": true
+  }
+ ],
+ "edges": [
+  {
+   "points": [
+    [
+     355,
+     300
+    ],
+    [
+     565,
+     300
+    ]
+   ],
+   "accent": true,
+   "label": "supplies"
+  },
+  {
+   "points": [
+    [
+     300,
+     335
+    ],
+    [
+     300,
+     585
+    ]
+   ],
+   "label": "placed by"
+  },
+  {
+   "points": [
+    [
+     355,
+     620
+    ],
+    [
+     565,
+     620
+    ]
+   ],
+   "label": "ships to"
+  },
+  {
+   "points": [
+    [
+     620,
+     335
+    ],
+    [
+     620,
+     585
+    ]
+   ],
+   "label": "fulfils"
+  }
+ ],
+ "bundles": [
+  {
+   "from": "analytics",
+   "to": "plane",
+   "at": [
+    -100,
+    400
+   ],
+   "toAt": [
+    80,
+    460
+   ],
+   "axis": "h",
+   "count": 6
+  },
+  {
+   "from": "auto",
+   "to": "plane",
+   "at": [
+    150,
+    150
+   ],
+   "toAt": [
+    200,
+    200
+   ],
+   "axis": "h",
+   "count": 6,
+   "accent": true,
+   "label": "triggers"
+  },
+  {
+   "from": "apps",
+   "to": "plane",
+   "at": [
+    400,
+    -100
+   ],
+   "toAt": [
+    460,
+    80
+   ],
+   "axis": "h",
+   "count": 6
+  },
+  {
+   "from": "plane",
+   "to": "data",
+   "at": [
+    420,
+    820
+   ],
+   "toAt": [
+    500,
+    1000
+   ],
+   "axis": "h",
+   "count": 5
+  },
+  {
+   "from": "plane",
+   "to": "logic",
+   "at": [
+    760,
+    760
+   ],
+   "toAt": [
+    750,
+    750
+   ],
+   "axis": "h",
+   "count": 5
+  },
+  {
+   "from": "plane",
+   "to": "action",
+   "at": [
+    820,
+    420
+   ],
+   "toAt": [
+    1000,
+    500
+   ],
+   "axis": "h",
+   "count": 5,
+   "accent": true,
+   "label": "writes back"
+  }
+ ]
+}

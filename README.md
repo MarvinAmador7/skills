@@ -43,7 +43,7 @@ The deliverable is code plus an **evidence ledger**: one row per claim (endpoint
 
 ### isometric-architecture-diagram
 
-Generate a static **Palantir-style isometric architecture diagram** (SVG + 2x PNG) from a JSON spec: layers as thin 30° slabs, components as small blocks with name tags, right-angle connectors with dots at the bends, and one accent color reserved for the live request path. Dependency-free Node generator plus a headless-Chrome render script, a visual QA checklist, and two example specs. Design adapted from the g-ops landing page ontology diagrams.
+Generate a static **Palantir-style isometric architecture diagram** (SVG + 2x PNG) from a JSON spec: layers as thin 30° slabs, components as small blocks with name tags, right-angle connectors with dots at the bends, and one accent color reserved for the live request path. Two layouts: a flat ontology plane, or stacked platforms floating above a base plane joined by bundled wires. Dependency-free Node generator plus a headless-Chrome render script, a visual QA checklist, and two example specs. Design adapted from the g-ops landing page ontology diagrams.
 
 ```bash
 npx skills add MarvinAmador7/skills --skill isometric-architecture-diagram
