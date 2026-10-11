@@ -1,0 +1,497 @@
+{
+ "title": "Addriva \u2014 Verify architecture",
+ "width": 1920,
+ "height": 1080,
+ "scale": 0.8,
+ "origin": [
+  698,
+  150
+ ],
+ "slabs": [
+  {
+   "x": 0,
+   "y": 0,
+   "w": 220,
+   "d": 420,
+   "label": "Clients"
+  },
+  {
+   "x": 320,
+   "y": 0,
+   "w": 700,
+   "d": 420,
+   "label": "Cloudflare Workers",
+   "grid": 40
+  },
+  {
+   "x": 1120,
+   "y": 0,
+   "w": 320,
+   "d": 420,
+   "label": "Storage"
+  },
+  {
+   "x": 600,
+   "y": 520,
+   "w": 600,
+   "d": 200,
+   "label": "Offline build (Delta)"
+  },
+  {
+   "x": 1240,
+   "y": 520,
+   "w": 200,
+   "d": 200,
+   "label": "Lexer pipeline"
+  }
+ ],
+ "boundaries": [
+  {
+   "x": 1135,
+   "y": 165,
+   "w": 290,
+   "d": 247,
+   "label": "R2 \u00b7 addriva-data"
+  }
+ ],
+ "nodes": [
+  {
+   "id": "landing",
+   "x": 110,
+   "y": 80,
+   "accent": true,
+   "dashed": false,
+   "title": "Landing site",
+   "subs": [
+    "+ live demo"
+   ],
+   "mono": false
+  },
+  {
+   "id": "api",
+   "x": 110,
+   "y": 220,
+   "accent": true,
+   "dashed": false,
+   "title": "API callers",
+   "subs": [],
+   "mono": false
+  },
+  {
+   "id": "agents",
+   "x": 110,
+   "y": 360,
+   "accent": false,
+   "dashed": true,
+   "title": "AI agents",
+   "subs": [
+    "future MCP"
+   ],
+   "mono": false
+  },
+  {
+   "id": "web",
+   "x": 420,
+   "y": 70,
+   "accent": false,
+   "dashed": false,
+   "title": "Web Worker",
+   "subs": [
+    "static site"
+   ],
+   "mono": false
+  },
+  {
+   "id": "server",
+   "x": 420,
+   "y": 220,
+   "accent": true,
+   "dashed": false,
+   "title": "Addriva Verify server",
+   "subs": [
+    "Hono \u00b7 oRPC \u00b7 Better Auth",
+    "/v1/verify/parse \u00b7 /v1/verify/lookup"
+   ],
+   "mono": false
+  },
+  {
+   "id": "lexer",
+   "x": 600,
+   "y": 220,
+   "accent": true,
+   "dashed": false,
+   "title": "Lexer",
+   "subs": [
+    "ONNX model in WASM",
+    "plus rule fallback"
+   ],
+   "mono": false
+  },
+  {
+   "id": "matcher",
+   "x": 780,
+   "y": 220,
+   "accent": true,
+   "dashed": false,
+   "title": "Matcher",
+   "subs": [
+    "exact \u00b7 fuzzy \u00b7 ambiguous",
+    "unit_required"
+   ],
+   "mono": false
+  },
+  {
+   "id": "cache",
+   "x": 960,
+   "y": 220,
+   "accent": true,
+   "dashed": false,
+   "title": "Worker memory cache",
+   "subs": [],
+   "mono": false
+  },
+  {
+   "id": "d1",
+   "x": 1280,
+   "y": 70,
+   "accent": false,
+   "dashed": false,
+   "title": "D1",
+   "subs": [
+    "auth and users"
+   ],
+   "mono": false
+  },
+  {
+   "id": "matchkey",
+   "x": 1280,
+   "y": 220,
+   "accent": true,
+   "dashed": false,
+   "title": "matchkey/v3.1",
+   "subs": [
+    "159.6M parcels \u00b7 per-ZIP Parquet"
+   ],
+   "mono": true
+  },
+  {
+   "id": "citymap",
+   "x": 1280,
+   "y": 368,
+   "accent": false,
+   "dashed": true,
+   "title": "citymap/v2",
+   "subs": [
+    "per-city street index",
+    "coming soon, PR #15"
+   ],
+   "mono": true,
+   "tagLift": 0
+  },
+  {
+   "id": "attom",
+   "x": 700,
+   "y": 620,
+   "accent": false,
+   "dashed": false,
+   "title": "ATTOM property data",
+   "subs": [],
+   "mono": false
+  },
+  {
+   "id": "duck",
+   "x": 900,
+   "y": 620,
+   "accent": false,
+   "dashed": false,
+   "title": "DuckDB / MotherDuck",
+   "subs": [
+    "build"
+   ],
+   "mono": false
+  },
+  {
+   "id": "evals",
+   "x": 1100,
+   "y": 620,
+   "accent": false,
+   "dashed": false,
+   "title": "Eval sets",
+   "subs": [
+    "+ training candidates"
+   ],
+   "mono": false
+  },
+  {
+   "id": "usps",
+   "x": 1340,
+   "y": 620,
+   "accent": false,
+   "dashed": false,
+   "title": "usps-lexer",
+   "subs": [
+    "GitHub Packages"
+   ],
+   "mono": false
+  }
+ ],
+ "edges": [
+  {
+   "points": [
+    [
+     165,
+     55
+    ],
+    [
+     365,
+     55
+    ]
+   ],
+   "accent": false,
+   "dashed": false
+  },
+  {
+   "points": [
+    [
+     165,
+     360
+    ],
+    [
+     265,
+     360
+    ],
+    [
+     265,
+     240
+    ],
+    [
+     365,
+     240
+    ]
+   ],
+   "accent": false,
+   "dashed": true
+  },
+  {
+   "points": [
+    [
+     440,
+     185
+    ],
+    [
+     440,
+     145
+    ],
+    [
+     1100,
+     145
+    ],
+    [
+     1100,
+     70
+    ],
+    [
+     1225,
+     70
+    ]
+   ],
+   "accent": false,
+   "dashed": false
+  },
+  {
+   "points": [
+    [
+     755,
+     620
+    ],
+    [
+     845,
+     620
+    ]
+   ],
+   "accent": false,
+   "dashed": false
+  },
+  {
+   "points": [
+    [
+     955,
+     620
+    ],
+    [
+     1045,
+     620
+    ]
+   ],
+   "accent": false,
+   "dashed": false
+  },
+  {
+   "points": [
+    [
+     1155,
+     620
+    ],
+    [
+     1285,
+     620
+    ]
+   ],
+   "accent": false,
+   "dashed": false
+  },
+  {
+   "points": [
+    [
+     900,
+     585
+    ],
+    [
+     900,
+     480
+    ],
+    [
+     1280,
+     480
+    ],
+    [
+     1280,
+     410
+    ]
+   ],
+   "accent": false,
+   "dashed": false
+  },
+  {
+   "points": [
+    [
+     1340,
+     585
+    ],
+    [
+     1340,
+     455
+    ],
+    [
+     600,
+     455
+    ],
+    [
+     600,
+     255
+    ]
+   ],
+   "accent": false,
+   "dashed": false
+  },
+  {
+   "points": [
+    [
+     165,
+     100
+    ],
+    [
+     240,
+     100
+    ],
+    [
+     240,
+     205
+    ],
+    [
+     365,
+     205
+    ]
+   ],
+   "accent": true,
+   "dashed": false
+  },
+  {
+   "points": [
+    [
+     165,
+     220
+    ],
+    [
+     365,
+     220
+    ]
+   ],
+   "accent": true,
+   "dashed": false
+  },
+  {
+   "points": [
+    [
+     475,
+     220
+    ],
+    [
+     545,
+     220
+    ]
+   ],
+   "accent": true,
+   "dashed": false
+  },
+  {
+   "points": [
+    [
+     655,
+     220
+    ],
+    [
+     725,
+     220
+    ]
+   ],
+   "accent": true,
+   "dashed": false
+  },
+  {
+   "points": [
+    [
+     835,
+     220
+    ],
+    [
+     905,
+     220
+    ]
+   ],
+   "accent": true,
+   "dashed": false
+  },
+  {
+   "points": [
+    [
+     1015,
+     220
+    ],
+    [
+     1225,
+     220
+    ]
+   ],
+   "accent": true,
+   "dashed": false
+  }
+ ],
+ "notes": [
+  {
+   "x": 1090,
+   "y": 480,
+   "text": "versioned folders \u2192 R2"
+  },
+  {
+   "x": 1225,
+   "y": 620,
+   "text": "misreads"
+  },
+  {
+   "x": 1000,
+   "y": 455,
+   "text": "model \u2192 Lexer"
+  }
+ ]
+}
